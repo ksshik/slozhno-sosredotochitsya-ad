@@ -1,15 +1,21 @@
-/* Глобальные стили для проекта, их можно дополнять и менять по желанию */
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+html {
+  block-size: 100%;
+}
+
 body {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 400;
   min-inline-size: 375px;
-  max-inline-size: 1440px;
+  max-inline-size: 1024px;
   margin: 0 auto;
+  block-size: 100%;
 }
 
 h1,
@@ -24,6 +30,7 @@ p {
 
 ul {
   margin: 0;
+
   padding: 0;
   list-style: none;
 }
@@ -39,4 +46,44 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.focus-frame::before,
+.focus-frame::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+}
+
+.focus-frame::before {
+  border-left: 1px solid var(--corners-color);
+  border-bottom: 1px solid var(--corners-color);
+  left: 20px;
+  bottom: 20px;
+}
+
+.focus-frame::after {
+  border-right: 1px solid var(--corners-color);
+  border-top: 1px solid var(--corners-color);
+  right: 20px;
+  top: 20px;
+}
+
+@media (375px <= width < 768px) {
+  .focus-frame::before {
+    left: 10px;
+    bottom: 17px;
+  }
+
+  .focus-frame::after {
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.marked-accent {
+  background: var(--title-decor);
 }
