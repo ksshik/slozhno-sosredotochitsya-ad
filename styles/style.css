@@ -1,5 +1,404 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
+/* Page */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  --transition-duration: 0.25s;
+
+  background: var(--background-image) no-repeat top center,
+    var(--background-color);
+  background-size: auto 768px;
+  background-attachment: fixed;
+  color: var(--main-text-color);
+  transition-duration: var(--transition-duration);
+}
+
+/* Header */
+
+.main-header {
+  padding: 0 20px;
+  position: relative;
+}
+
+.main-header__indicator {
+  position: absolute;
+  color: var(--rec-color);
+  text-transform: uppercase;
+  top: 21px;
+  right: 49px;
+}
+
+.main-header__indicator::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px -20px 0 0;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px var(--rec-color);
+  background-color: var(--rec-color);
+  top: 50%;
+  right: 0;
+}
+
+.header__theme-menu {
+  padding-top: 20px;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.header__theme-menu-button {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--corners-color);
+  line-height: 100%;
+  padding: 2.5px 12px;
+  border: transparent;
+  background: none;
+  transition-duration: var(--transition-duration);
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  border: var(--hover-color);
+}
+
+.header__theme-menu-button:focus {
+  border: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-bottom: 1px solid var(--corners-color);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid;
+}
+
+.main-header__logo {
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: 700;
+  margin-left: -2%;
+  color: var(--title-color);
+  text-shadow: 4px 4px 0px var(--title-shadow);
+}
+
+.main-header__logo-container {
+  padding: 238px 0 136px;
+  display: flex;
+  flex-direction: column;
+  gap: 76px;
+}
+
+.main-header__description {
+  color: var(--article-title-color);
+  align-self: flex-end;
+  font-weight: 700;
+  width: 50%;
+}
+
+/* Main content */
+
+.content-wrapper {
+  padding: 0 20px;
+  margin: 60px 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.content-block {
+  line-height: 130%;
+}
+
+.content-block__heading {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--section-title-color);
+}
+
+.contrast-heading {
+  color: var(--article-title-color);
+}
+
+.content-block__articles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content-block__articles-heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--article-title-color);
+}
+
+.text-note {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text-note__subtitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--article-title-color);
+}
+
+.text-note__subtitle_weight_regular {
+  font-weight: 400;
+}
+
+.text-note__paragraph-link {
+  border: transparent;
+  text-shadow: 3px 3px 0px var(--link-shadow);
+  transition-duration: var(--transition-duration);
+}
+
+.text-note__paragraph-link:hover {
+  border-bottom: 1px solid var(--main-text-color);
+}
+
+.text-note__paragraph-link:focus {
+  outline: none;
+}
+
+.text-note__paragraph-link:focus-visible {
+  outline: 1px solid var(--main-text-color);
+}
+
+.content-block:first-of-type,
+.content-block:nth-of-type(3) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.content-block:first-of-type .content-block__heading,
+.content-block:nth-of-type(3) .content-block__heading {
+  flex: 0 0 auto;
+  width: 33%;
+}
+
+.content-block:first-of-type .content-block__articles,
+.content-block:nth-of-type(3) .content-block__articles {
+  flex: 0 0 auto;
+  width: 66%;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-block:nth-of-type(2) .content-block__heading {
+  width: 30%;
+}
+
+.content-block:nth-of-type(2) .text-note {
+  flex: 0 0 auto;
+  width: 32%;
+}
+
+.content-block:last-of-type {
+  display: grid;
+}
+
+.content-block:last-of-type .content-block__heading {
+  grid-column: 1/-1;
+  width: 100%;
+  margin: 0;
+}
+
+/* Footer */
+
+.main-footer {
+  padding: 282px 20px;
+  position: relative;
+  text-align: center;
+}
+
+.main-footer__title {
+  font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  font-weight: 700;
+  color: var(--title-color);
+  text-shadow: 2px 2px 0px var(--title-shadow);
+}
+
+/* Media Queries (диапазон от 375px до 768px) */
+@media (375px <= width < 768px) {
+  .main-header {
+    padding: 0 10px;
+  }
+
+  .main-header__indicator {
+    top: 11px;
+    right: 39px;
+  }
+
+  .header__theme-menu {
+    padding-top: 75px;
+  }
+
+  .header__theme-menu-list {
+    gap: 11px;
+  }
+
+  .main-header__logo {
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+    margin-left: 0;
+    line-height: 82.5%;
+  }
+
+  .main-header__logo-container {
+    padding: 70px 0 74px;
+    gap: 57px;
+  }
+
+  .content-wrapper {
+    padding: 0 10px;
+    margin: 34px 0;
+    gap: 50px;
+  }
+
+  .content-block__heading,
+  .content-block:first-of-type .content-block__heading,
+  .content-block:nth-of-type(3) .content-block__heading,
+  .content-block:nth-of-type(2) .content-block__heading {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .content-block:first-of-type .content-block__articles,
+  .content-block:nth-of-type(3) .content-block__articles {
+    width: 100%;
+  }
+
+  .main-footer {
+    margin-top: 40px;
+    padding: 262px 10px;
+  }
+
+  .main-footer__title {
+    font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  }
+}
+
+/* Media Queries (дополнительные стили для экранов меньше 768px) */
+@media (width < 768px) {
+  .content-block:last-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .content-block:last-of-type .content-block__image {
+    width: 100%;
+    height: auto;
+  }
+
+  .content-block:last-of-type .content-block__image-container {
+    width: 100px;
+  }
+}
+
+/* Media Queries (диапазон от 768px до 1024px) */
+@media (768px <= width < 1024px) {
+  .header__theme-menu {
+    padding-top: 190px;
+  }
+
+  .main-header__logo {
+    margin-left: -3%;
+  }
+
+  .main-header__logo-container {
+    padding: 150px 0 183px;
+    gap: 133px;
+  }
+
+  .content-block__heading {
+    width: 35%;
+  }
+
+  .content-block:first-of-type .content-block__heading,
+  .content-block:nth-of-type(3) .content-block__heading {
+    width: 32%;
+  }
+
+  .content-block:first-of-type .content-block__articles,
+  .content-block:nth-of-type(3) .content-block__articles {
+    width: 65%;
+  }
+
+  .main-footer {
+    padding: 434px 20px;
+  }
+}
+
+/* Media Queries (экраны больше или равны 768px) */
+@media (width >= 768px) {
+  .content-block:last-of-type {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 19px;
+  }
+
+  .content-block:last-of-type .content-block__image {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content-block:last-of-type .content-block__image:first-of-type,
+  .content-block:last-of-type .content-block__image:last-of-type {
+    grid-column: span 2;
+  }
+
+  .content-block:last-of-type .content-block__image:nth-of-type(2),
+  .content-block:last-of-type .content-block__image:nth-of-type(3) {
+    grid-row: span 2;
+  }
+}
+
+/* Media Queries (экраны меньше 1024px) */
+@media (width < 1024px) {
+  .header__theme-menu-list {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+/* Media Queries (комбинированные стили для экранов от 375px до 1024px) */
+@media (375px <= width < 1024px) {
+  .main-header__logo {
+    text-shadow: 4px 4px 0px var(--title-decor);
+  }
+
+  .content-block:nth-of-type(2) .content-block__articles {
+    gap: 20px;
+  }
+
+  .content-block:nth-of-type(2) .text-note {
+    flex: 1 0 auto;
+    width: 100%;
+  }
+
+  .main-footer__title {
+    text-shadow: 2px 2px 0px var(--title-decor);
+  }
+}
+
+/* Media Queries (экраны больше или равны 1024px) */
+@media (width >= 1024px) {
+  .content-block:nth-of-type(2) .content-block__articles {
+    justify-content: space-between;
+  }
+}
+
+/* Media Queries (экраны меньше 425px) */
+@media (width < 425px) {
+  .main-header__description {
+    width: 100%;
+  }
 }
